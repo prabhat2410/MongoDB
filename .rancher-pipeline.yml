@@ -1,0 +1,15 @@
+stages:
+- name: build
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: mongo:v2
+      pushRemote: true
+      registry: 10.0.8.59:5000
+- name: deploy
+  steps:
+  - applyYamlConfig:
+      path: ./mongo_deployment.yml
+timeout: 60
+notification: {}
