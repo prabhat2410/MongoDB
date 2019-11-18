@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: mongo
-        image: csp2-centos-4:5000/fiware-mongo
+        image: mongo
         ports:
         - name: mongo
           containerPort: 27017
