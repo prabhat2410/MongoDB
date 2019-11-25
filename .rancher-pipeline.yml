@@ -9,12 +9,11 @@ stages:
       registry: 192.168.100.176:5000
     when:
       branch:
-        include:
+        exclude:
         - master
       event:
-        include:
+        exclude:
         - pull_request
-        - push
 - name: deploy
   steps:
   - applyYamlConfig:
