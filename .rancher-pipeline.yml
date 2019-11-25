@@ -25,7 +25,5 @@ stages:
       path: ./pv.yaml
   - applyYamlConfig:
       path: ./mongo-statefulset.yaml
-  - applyYamlConfig:
-      path: ./mongo_service.yml
 timeout: 600
 notification: {}
