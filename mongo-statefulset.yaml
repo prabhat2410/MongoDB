@@ -58,9 +58,8 @@ spec:
   - metadata:
       name: mongo-storage
     spec:
-      storageClassName: manual
-      accessModes:
-        - ReadWriteOnce
+      storageClassName: "manual"
+      accessModes: ["ReadWriteOnce"]
       resources:
         requests:
           storage: 4Gi
