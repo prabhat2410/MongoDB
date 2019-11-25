@@ -7,6 +7,14 @@ stages:
       tag: mongo:v2
       pushRemote: true
       registry: 192.168.100.176:5000
+    when:
+      branch:
+        include:
+        - master
+      event:
+        include:
+        - pull_request
+        - push
 - name: deploy
   steps:
   - applyYamlConfig:
