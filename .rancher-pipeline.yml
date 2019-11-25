@@ -15,5 +15,5 @@ stages:
       path: ./mongo-statefulset.yaml
   - applyYamlConfig:
       path: ./mongo_service.yml
-timeout: 60
+timeout: 600
 notification: {}
