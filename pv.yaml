@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: fiwaremongo-pv01
+  name: fiwaremongo-pv01-ppln
   labels: 
     type: local 
 spec:
@@ -12,7 +12,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain 
   nfs: 
-    path: /var/nfs/fiware/pv01 
+    path: /var/nfs/dev_area/pipeline-pv1 
     server: 192.168.100.176 
     readOnly: false
 
@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: fiwaremongo-pv02
+  name: fiwaremongo-pv02-ppln
   labels:
     type: local
 spec:
@@ -31,7 +31,7 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    path: /var/nfs/fiware/pv02
+    path: /var/nfs/dev_area/pipeline-pv2
     server: 192.168.100.176
     readOnly: false
 
@@ -39,7 +39,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: fiwaremongo-pv03
+  name: fiwaremongo-pv03-ppln
   labels: 
     type: local
 spec:
@@ -50,6 +50,6 @@ spec:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   nfs:
-    path: /var/nfs/fiware/pv03
+    path: /var/nfs/dev_area/pipeline-pv3
     server:  192.168.100.176
     readOnly: false
