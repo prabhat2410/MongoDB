@@ -10,6 +10,10 @@ stages:
 - name: deploy
   steps:
   - applyYamlConfig:
-      path: ./deployment.yaml
+      path: ./pv.yaml
+  - applyYamlConfig:
+      path: ./mongo-statefulset.yaml
+  - applyYamlConfig:
+      path: ./mongo_service.yml
 timeout: 60
 notification: {}
