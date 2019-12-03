@@ -2,6 +2,8 @@ apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: mongo
+subjects:
+  - namespace: ceph
 spec:
   serviceName: "mongo"
   replicas: 3
@@ -14,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 10
       containers:
         - name: mongo
-          image: csp2-centos-4:5000/fiware-mongo
+          image: mongo
           command:
             - mongod
             - "--replSet"
@@ -30,10 +32,10 @@ spec:
              - "-c"          
              - |
                set -ex  
-               mongo --eval "rs.initiate({_id: 'rs0',members: [{_id: 0, host: 'mongo-0.mongo:27017'},{_id: 1, host: 'mongo-1.mongo:27017'},{_id: 2, host: 'mongo-2.mongo:27017'}]})";
+               mongo --eval "rs.initiate({_id: 'rs0',members: [{_id: 0, host: 'mongo-0.mongo.ceph.svc.cluster.local:27017'},{_id: 1, host: 'mongo-1.mongo.ceph.svc.cluster.local:27017'},{_id: 2, host: 'mongo-2.mongo.ceph.svc.cluster.local:27017'}]})";
           volumeMounts:
             - name: mongo-storage
-              mountPath: /data/mongo_db
+              mountPath: /data/db
         - name: mongo-sidecar
           image: cvallance/mongo-k8s-sidecar
           env:
@@ -43,9 +45,9 @@ spec:
   - metadata:
       name: mongo-storage
     spec:
-      storageClassName: manual
+      storageClassName: "mongo-sc"
       accessModes:
         - ReadWriteOnce
       resources:
         requests:
-          storage: 4Gi
+          storage: 5Gi
