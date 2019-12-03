@@ -2,8 +2,7 @@ apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
   name: mongo
-subjects:
-  - namespace: ceph
+  namespace: ceph
 spec:
   serviceName: "mongo"
   replicas: 3
