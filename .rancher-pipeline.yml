@@ -4,7 +4,7 @@ stages:
   - publishImageConfig:
       dockerfilePath: ./Dockerfile
       buildContext: .
-      tag: mongo:v2
+      tag: mongo:v3
       pushRemote: true
       registry: 10.0.8.61:31484
     env:
