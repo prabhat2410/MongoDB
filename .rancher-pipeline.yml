@@ -13,11 +13,10 @@ stages:
       PLUGIN_STORAGE_PATH: /var/lib/docker2
     when:
       branch:
-        exclude:
+        include:
         - master
-      event:
         exclude:
-        - pull_request
+        - cluster-10-test
 - name: deploy
   steps:
   - applyYamlConfig:
